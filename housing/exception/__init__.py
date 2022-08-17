@@ -11,10 +11,10 @@ class HousingException(Exception):
     @staticmethod
     def get_detailed_error_message(error_message:Exception,error_details:sys) ->str:
         _,_,exce_tb = error_details.exc_info()
-        line_no = exce_tb.tb_frame.f_lineno
+        line_no = exce_tb.tb_lineno
         filename = exce_tb.tb_frame.f_code.co_filename
 
-        error_msg = f"Exception occured in line : [{line_no}] in the file : [{filename}] , error : [{error_message}]"
+        error_msg = f"Exception occured in line : [{line_no}] in the file : [ {filename} ] , error : [{error_message}]"
         return error_msg
 
 

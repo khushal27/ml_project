@@ -3,5 +3,7 @@ Flask
 gunicorn
 sklearn
 pandas
+six
+evidently
 
  
