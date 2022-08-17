@@ -1,9 +1,10 @@
 from housing.logger import logging
 from housing.exception import HousingException
-import sys
+import sys,os
 import yaml
 import pandas as pd
-
+import numpy as np
+import dill
 def read_yaml(file_path:str) -> dict:
     """
     This function read yaml file and return dict
@@ -47,3 +48,30 @@ def dump_yaml(file_path:str)-> None:
 
     except Exception as e:
         raise HousingException(e,sys) from e    
+
+
+def save_array_data(filepath:str,array:np.array):
+    """
+    This util function save numpy array into file
+    filepath :str
+    array : np.array
+    """
+    try:
+        dir_path = os.path.dirname(filepath)
+        os.makedirs(dir_path,exist_ok=True)
+        with open(filepath,"wb") as np_file:
+            np.save(np_file,array)
+    except Exception as e:
+        raise HousingException(e,sys) from e    
+
+
+def save_object_as_pkl(file_path:str , obj):
+    """
+    """
+    try:
+        dir_path = os.path.dirname(file_path)
+        os.makedirs(dir_path, exist_ok=True)
+        with open(file_path,"wb") as file_object:
+            dill.dump(obj,file_object)
+    except Exception as e:
+        raise HousingException(e,sys) from e  

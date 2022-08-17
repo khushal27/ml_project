@@ -112,8 +112,9 @@ class DataValidation:
             self.is_data_drift_found()
             report = self.data_validation_config.report_file_path
             report_page = self.data_validation_config.report_page_file_path
+            schema_file_path = self.data_validation_config.schema_file_path
             data_validation_artifact = DataValidationArtifact(report=report,report_page=report_page,
-            is_validated=True,message="Data validation completed!")
+            is_validated=True,message="Data validation completed!",schema_file_path=schema_file_path)
 
             logging.info(f"Data Validation Artifact : [ {data_validation_artifact} ]")
             return data_validation_artifact

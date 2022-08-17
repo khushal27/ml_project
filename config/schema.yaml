@@ -11,7 +11,7 @@ columns:
   total_rooms: float
   
 
-target_column : median_income
+target_column : median_house_value
 
 domain_values:
   ocean_proximity: 
